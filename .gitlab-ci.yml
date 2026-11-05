@@ -1,0 +1,15 @@
+image: maven:3.9-eclipse-temurin-17
+
+stages:
+  - build
+  - test
+
+compilar:
+  stage: build
+  script:
+    - mvn compile
+
+pruebas:
+  stage: test
+  script:
+    - mvn test

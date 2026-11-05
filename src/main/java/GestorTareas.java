@@ -14,7 +14,7 @@ tareas.add(new Tarea(titulo));
 }
 
 public int contarTareas() {
-return tareas.size() + 1; // BUG: debería ser tareas.size()
+return tareas.size();
 }
 
 public int contarCompletadas() {
@@ -28,10 +28,10 @@ return count;
 }
 
 public void completarTarea(int indice) {
-if (indice >= 0 && indice < tareas.size()) {
-tareas.get(indice).completar();
+if (indice < 0 ||  indice >= tareas.size()) {
+       throw new IndexOutOfBoundsException("Indice fuera de rango");
 }
-// BUG: no maneja índice fuera de rango
+tareas.get(indice).setCompletada(true);
 }
 
 public List<Tarea> getTareas() {

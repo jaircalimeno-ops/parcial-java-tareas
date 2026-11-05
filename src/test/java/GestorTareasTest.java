@@ -22,9 +22,9 @@ assertEquals(1, gestor.contarCompletadas()); // PASA
 }
 
 @Test
-public void testCompletarTareaFueraDeRango() {
-GestorTareas gestor = new GestorTareas();
-// FALTA: prueba de índice fuera de rango
-assertDoesNotThrow(() -> gestor.completarTarea(5));
-}
-}
+    public void testCompletarTareaFueraDeRango() {
+        GestorTareas gestor = new GestorTareas();
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            gestor.completarTarea(999);
+        });
+    }

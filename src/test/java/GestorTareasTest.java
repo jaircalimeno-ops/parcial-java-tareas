@@ -27,4 +27,14 @@ GestorTareas gestor = new GestorTareas();
 // Verifica que un indice fuera de rango no lance excepcion
 assertDoesNotThrow(() -> gestor.completarTarea(5));
 }
+
+
+@Test
+public void testCompletarTareaFueraDeRangoNoAlteraCompletadas() {
+    GestorTareas gestor = new GestorTareas();
+    gestor.agregarTarea("Tarea 1");
+    gestor.completarTarea(5);
+    gestor.completarTarea(-1);
+    assertEquals(0, gestor.contarCompletadas());
+}
 }

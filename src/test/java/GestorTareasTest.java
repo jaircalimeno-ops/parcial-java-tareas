@@ -9,7 +9,7 @@ public class GestorTareasTest {
 public void testAgregarTarea() {
 GestorTareas gestor = new GestorTareas();
 gestor.agregarTarea("Estudiar");
-assertEquals(1, gestor.contarTareas()); // FALLA: contarTareas retorna 2
+assertEquals(1, gestor.contarTareas()); // PASA: corregido en contarTareas()
 }
 
 @Test
@@ -24,7 +24,17 @@ assertEquals(1, gestor.contarCompletadas()); // PASA
 @Test
 public void testCompletarTareaFueraDeRango() {
 GestorTareas gestor = new GestorTareas();
-// FALTA: prueba de índice fuera de rango
+// Verifica que un indice fuera de rango no lance excepcion
 assertDoesNotThrow(() -> gestor.completarTarea(5));
+}
+
+
+@Test
+public void testCompletarTareaFueraDeRangoNoAlteraCompletadas() {
+    GestorTareas gestor = new GestorTareas();
+    gestor.agregarTarea("Tarea 1");
+    gestor.completarTarea(5);
+    gestor.completarTarea(-1);
+    assertEquals(0, gestor.contarCompletadas());
 }
 }

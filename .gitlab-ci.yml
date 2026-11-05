@@ -1,0 +1,35 @@
+stages:
+  - test
+  - build
+
+image: maven:3.9-eclipse-temurin-21
+
+cache:
+  key: maven-dependencies
+  paths:
+    - .m2/repository/
+
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
+
+pruebas_unitarias:
+  stage: test
+  script:
+    - mvn clean test
+  artifacts:
+    when: always
+    reports:
+      junit:
+        - target/surefire-reports/TEST-*.xml
+    paths:
+      - target/surefire-reports/
+    expire_in: 7 days
+
+construir_aplicacion:
+  stage: build
+  script:
+    - mvn package -DskipTests
+  artifacts:
+    paths:
+      - target/*.jar
+    expire_in: 7 days

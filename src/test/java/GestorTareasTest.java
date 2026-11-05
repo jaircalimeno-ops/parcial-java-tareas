@@ -25,6 +25,8 @@ assertEquals(1, gestor.contarCompletadas()); // PASA
 public void testCompletarTareaFueraDeRango() {
 GestorTareas gestor = new GestorTareas();
 // FALTA: prueba de índice fuera de rango
+gestor.agregarTarea("Tarea 1");
+gestor.agregarTarea("Tarea 2");
 assertDoesNotThrow(() -> gestor.completarTarea(5));
 }
 }

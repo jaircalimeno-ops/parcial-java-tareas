@@ -14,7 +14,7 @@ tareas.add(new Tarea(titulo));
 }
 
 public int contarTareas() {
-return tareas.size() + 1; // BUG: debería ser tareas.size()
+return tareas.size(); // BUG: debería ser tareas.size()
 }
 
 public int contarCompletadas() {

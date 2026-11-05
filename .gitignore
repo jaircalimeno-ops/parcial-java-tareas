@@ -1,0 +1,9 @@
+target/
+*.class
+.vscode/
+.idea/
+.settings/
+.classpath
+.project
+.metals/
+src/.metals/

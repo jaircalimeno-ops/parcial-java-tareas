@@ -23,8 +23,11 @@ assertEquals(1, gestor.contarCompletadas()); // PASA
 
 @Test
 public void testCompletarTareaFueraDeRango() {
-GestorTareas gestor = new GestorTareas();
-// FALTA: prueba de índice fuera de rango
-assertDoesNotThrow(() -> gestor.completarTarea(5));
+    GestorTareas gestor = new GestorTareas();
+    gestor.agregarTarea("Estudiar");
+    
+    // Verificamos que al intentar completar un índice fuera de rango (ej. 5 o -1),
+    // el sistema maneje el límite sin lanzar excepciones descontroladas
+    assertDoesNotThrow(() -> gestor.completarTarea(5));
 }
 }

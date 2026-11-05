@@ -1,0 +1,9 @@
+image: eclipse-temurin:17-jdk
+
+stages:
+  - test
+
+maven_test:
+  stage: test
+  script:
+    - ./mvnw clean test

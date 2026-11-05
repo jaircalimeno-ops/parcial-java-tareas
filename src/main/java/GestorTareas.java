@@ -14,7 +14,7 @@ tareas.add(new Tarea(titulo));
 }
 
 public int contarTareas() {
-return tareas.size() + 1; // BUG: debería ser tareas.size()
+return tareas.size(); // Corregido: se elimino el "+1" que inflaba el conteo 
 }
 
 public int contarCompletadas() {
@@ -31,7 +31,7 @@ public void completarTarea(int indice) {
 if (indice >= 0 && indice < tareas.size()) {
 tareas.get(indice).completar();
 }
-// BUG: no maneja índice fuera de rango
+// OK: la validacion dle indice evita errores furas de rango
 }
 
 public List<Tarea> getTareas() {
